@@ -15,7 +15,14 @@ RUN apt update -y && \
     curl \
     zip \
     unzip \
-    wget
+    wget \
+    ca-certificates
+
+# gitを使えるようにするためにルート証明書を追加
+RUN mkdir /usr/local/share/ca-certificates/cacert.org
+RUN wget -P /usr/local/share/ca-certificates/cacert.org http://www.cacert.org/certs/root.crt http://www.cacert.org/certs/class3.crt
+RUN update-ca-certificates
+RUN git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
 
 # パッケージファイルをコピーし、依存関係をインストール
 COPY package.json package-lock.json ./
