@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { siteConfig } from "@/site.config";
- 
+
+// メインページ
 const Home: NextPage = () => {
   return <Layout>
     <div className="pt-12">
