@@ -27,6 +27,7 @@ RUN git config --global http.sslCAinfo /etc/ssl/certs/ca-certificates.crt
 # パッケージファイルをコピーし、依存関係をインストール
 COPY package.json package-lock.json ./
 RUN npm install
+RUN yarn add -D @notionhq/client@1.0.4
 
 # 開発用サーバの起動
 CMD ["npm", "run", "dev"]
